@@ -14,3 +14,14 @@ const convertNamesToUpperCase = function(employees){
         return result;
 };
 
+// 2.2 - Convert email addresses to lowercase
+const convertEmailsToLowerCase = function(employees) {
+  const result = employees.map(emp => ({
+    ...emp,
+    email: emp.email.toLowerCase(),
+  }));
+  console.log("2.2 - Emails lowercased:",
+    result.slice(0, 3).map(e => e.email));
+  return result;
+};
+
