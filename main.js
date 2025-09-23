@@ -91,3 +91,9 @@ const findById = (employees, id) => {
   return employees.find(emp => emp.id === id);
 };
 
+// 3.5 - Sort employees by salary from highest to lowest 
+const sortEmployeesBySalary = employees => {
+  const sortedEmployees = [...employees].sort((a, b) => b.salary - a.salary);
+  return sortedEmployees;
+};
+
