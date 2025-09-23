@@ -81,3 +81,8 @@ const getHighEarners = employees => {
   return employees.filter(emp => emp.salary > 75000);
 };
 
+// 3.3 - Calculate the total salary
+const calculateTotalSalary = employees => {
+  return employees.reduce((total, emp) => total + emp.salary, 0);
+};
+
