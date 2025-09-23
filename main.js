@@ -97,3 +97,8 @@ const sortEmployeesBySalary = employees => {
   return sortedEmployees;
 };
 
+// 3.6 - Check if anyone has JavaScript skills
+const hasJavaScriptSkill = employees => {
+  return employees.some(emp => emp.skills.includes('JavaScript'));
+};
+
