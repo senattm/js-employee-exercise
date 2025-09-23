@@ -51,3 +51,21 @@ const extractUsernames = function(employees) {
   return result;
 };
 
+// 2.5 - Convert position names to camelCase
+const convertPositionToCamelCase = function(employees) {
+  const result = employees.map(emp => {
+    const words = emp.position.split(' ');
+    const camelCasePosition = words.map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join('');
+    return { ...emp,
+      position: camelCasePosition
+    };
+  });
+  console.log("2.5 - Positions to camelCase:",
+    result.slice(0, 3).map(e => e.position));
+  return result;
+};
