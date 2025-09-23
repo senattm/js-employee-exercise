@@ -112,13 +112,15 @@ const getSkillsAsString = employee => {
   return employee.skills.join(', ');
 };
 
-// 4.1 - Get all keys of an employee
 const objectUtils = {
+    // 4.1 - Get all keys of an object
     getObjectKeys(obj) {
         return Object.keys(obj);
-    },
+    }, 
+
+    // 4.2 - Get all values of an object
     getObjectValues(obj) {
         return Object.values(obj);
-    }
+    } 
 };
 
