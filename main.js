@@ -36,3 +36,18 @@ const trimNames = function(employees) {
     result.slice(0, 3).map(e => `${e.firstName} ${e.lastName}`));
   return result;
 };
+
+// 2.4 - Extract usernames from email addresses
+const extractUsernames = function(employees) {
+  const result = employees.map(emp => {
+    const atIndex = emp.email.indexOf('@');
+    const username = emp.email.substring(0, atIndex);
+    return { ...emp,
+      username
+    };
+  });
+  console.log("Usernames extracted:",
+    result.slice(0, 3).map(e => e.username));
+  return result;
+};
+
