@@ -76,3 +76,8 @@ const getFullNames = employees => {
   return fullNames;
 };
 
+// 3.2 - Filter employees with a salary more than 75000
+const getHighEarners = employees => {
+  return employees.filter(emp => emp.salary > 75000);
+};
+
