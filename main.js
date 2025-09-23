@@ -104,8 +104,52 @@ const convertPositionToCamelCase = function(employees) {
       position: camelCasePosition
     };
   });
-  console.log("2.5 - Positions to camelCase:",
+  console.log("Positions to camelCase:",
     result.slice(0, 3).map(e => e.position));
   return result;
 };
+
+
+// 3.1 - Create an array of full names
+const getFullNames = employees => {
+  const fullNames = employees.map(emp => `${emp.firstName} ${emp.lastName}`);
+  return fullNames;
+};
+
+// 3.2 - Filter employees with a salary more than 75000
+const getHighEarners = employees => {
+  return employees.filter(emp => emp.salary > 75000);
+};
+
+// 3.3 - Calculate the total salary
+const calculateTotalSalary = employees => {
+  return employees.reduce((total, emp) => total + emp.salary, 0);
+};
+
+// 3.4 - Find employee by ID
+const findById = (employees, id) => {
+  return employees.find(emp => emp.id === id);
+};
+
+// 3.5 - Sort employees by salary from highest to lowest 
+const sortEmployeesBySalary = employees => {
+  const sortedEmployees = [...employees].sort((a, b) => b.salary - a.salary);
+  return sortedEmployees;
+};
+
+// 3.6 - Check if anyone has JavaScript skills
+const hasJavaScriptSkill = employees => {
+  return employees.some(emp => emp.skills.includes('JavaScript'));
+};
+
+// 3.7 - Get the first 3 employees
+const getFirstThreeEmployees = employees => {
+  return employees.slice(0, 3);
+};
+
+// 3.8 - Combine skills into a single string
+const getSkillsAsString = employee => {
+  return employee.skills.join(', ');
+};
+
 
