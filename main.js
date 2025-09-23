@@ -24,3 +24,15 @@ const convertEmailsToLowerCase = function(employees) {
     result.slice(0, 3).map(e => e.email));
   return result;
 };
+
+// 2.3 - Trim whitespace from names
+const trimNames = function(employees) {
+  const result = employees.map(emp => ({
+    ...emp,
+    firstName: emp.firstName.trim(),
+    lastName: emp.lastName.trim(),
+  }));
+  console.log("2.3 - Names trimmed:",
+    result.slice(0, 3).map(e => `${e.firstName} ${e.lastName}`));
+  return result;
+};
