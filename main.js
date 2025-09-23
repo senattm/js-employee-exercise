@@ -24,4 +24,3 @@ const convertEmailsToLowerCase = function(employees) {
     result.slice(0, 3).map(e => e.email));
   return result;
 };
-
