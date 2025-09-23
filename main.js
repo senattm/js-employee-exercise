@@ -107,3 +107,8 @@ const getFirstThreeEmployees = employees => {
   return employees.slice(0, 3);
 };
 
+// 3.8 - Combine skills into a single string
+const getSkillsAsString = employee => {
+  return employee.skills.join(', ');
+};
+
