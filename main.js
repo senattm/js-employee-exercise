@@ -1,5 +1,4 @@
-const companyData = require("./data/companyData"); // <-- THIS LINE IS REQUIRED AT THE TOP
-
+const companyData = require("./data/companyData");
 // 1.1 - Convert to JSON string
 function convertToJSONString(data) {
   try {
@@ -23,4 +22,20 @@ function parseJSONString(str) {
     return null;
   }
 }
+
+// 1.3 - Print only the employees array in JSON format
+function printEmployeesJSON(data) {
+  const employeesJSON = JSON.stringify(data.employees);
+  console.log("Employees JSON (preview):", employeesJSON.substring(0, 100) + "...");
+  return employeesJSON;
+}
+
+// 1.4 - Formatted JSON
+function printFormattedJSON(data, indent = 2) {
+  const formattedJSON = JSON.stringify(data, null, indent);
+  console.log(`1.4 - Formatted JSON (indent=${JSON.stringify(indent)}) preview:`);
+  console.log(formattedJSON.substring(0, 200) + "...");
+  return formattedJSON;
+}
+
 
