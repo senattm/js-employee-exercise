@@ -65,7 +65,14 @@ const convertPositionToCamelCase = function(employees) {
       position: camelCasePosition
     };
   });
-  console.log("2.5 - Positions to camelCase:",
+  console.log("Positions to camelCase:",
     result.slice(0, 3).map(e => e.position));
   return result;
 };
+
+// 3.1 - Create an array of full names
+const getFullNames = employees => {
+  const fullNames = employees.map(emp => `${emp.firstName} ${emp.lastName}`);
+  return fullNames;
+};
+
