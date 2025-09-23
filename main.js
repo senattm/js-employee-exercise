@@ -102,3 +102,8 @@ const hasJavaScriptSkill = employees => {
   return employees.some(emp => emp.skills.includes('JavaScript'));
 };
 
+// 3.7 - Get the first 3 employees
+const getFirstThreeEmployees = employees => {
+  return employees.slice(0, 3);
+};
+
