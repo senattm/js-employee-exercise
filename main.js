@@ -150,3 +150,19 @@ const convertStartDates = () => {
     console.log("Start dates have been converted");
     return datesConverted;
 };
+
+// 5.2 - Calculate how many years employees have worked
+const calculateWorkingYears = () => {
+    const currentDate = new Date();
+    const workingYears = companyData.employees.map(emp => {
+        const startDate = new Date(emp.startDate);
+        const years = (currentDate - startDate) / (1000 * 60 * 60 * 24 * 365.25);
+        return {
+            name: `${emp.firstName} ${emp.lastName}`,
+            years: Math.floor(years)
+        };
+    });
+    console.log("Working years:", workingYears);
+    return workingYears;
+};
+
