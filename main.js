@@ -272,3 +272,10 @@ const transformEmployee = (employee) => {
         active: employee.isActive
     };
 };
+
+ // 8.1 - Create a salary filter function
+function createSalaryFilter(minSalary, maxSalary = Infinity) {
+    return function(employee) {
+        return employee.salary >= minSalary && employee.salary <= maxSalary;
+    };
+};
