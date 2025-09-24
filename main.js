@@ -228,3 +228,15 @@ Employee.prototype.getFullName = function() {
     return `${this.firstName} ${this.lastName}`;
 };
 
+Employee.prototype.calculateYearlySalary = function() {
+    return this.salary * 12;
+};
+
+// 6.4 - Add a static method  
+Employee.getAllEmployees = function() {
+    return companyData.employees;
+};
+
+Employee.getTotalEmployeeCount = function() {
+    return companyData.employees.length;
+};
