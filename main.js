@@ -240,3 +240,41 @@ Employee.getAllEmployees = function() {
 Employee.getTotalEmployeeCount = function() {
     return companyData.employees.length;
 };
+
+// 7.1 - Write a callback function to process employees
+
+// A function that finds an employee by ID and processes them using a callback.
+const findEmployeeByIdAndProcess = (id, callback) => {
+    // Simulate an asynchronous operation with a 1-second delay, like a database query.
+    setTimeout(() => {
+        const foundEmployee = companyData.employees.find(emp => emp.id === id);
+
+        // Standard Node.js callback pattern: (error, data)
+        if (!foundEmployee) {
+            // If the employee is not found, call the callback with an error message.
+            callback(`Error: Employee with ID ${id} not found.`);
+            return;
+        }
+
+        // If successful, call the callback with null for the error and the employee data.
+        callback(null, foundEmployee);
+
+    }, 1000); // 1-second delay
+};
+
+// This is the callback function that will be executed once the data is ready.
+const processEmployeeSalary = (err, employee) => {
+    // Always check for an error first.
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    // If there is no error, perform the operation.
+    const newSalary = employee.salary * 1.15; // 15% salary increase
+    console.log(`Employee: ${employee.firstName} ${employee.lastName}`);
+    console.log(`Old Salary: $${employee.salary}`);
+    console.log(`New Salary: $${newSalary}`);
+};
+
+// --- Test Cases ---
