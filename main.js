@@ -406,7 +406,7 @@ async function performMultipleOperations() {
     }
 };
 
-//11.1 Employee factory.
+//11.1 Create employee factory.
  const createEmployee = (firstName, lastName, email, position, salary, department, skills = []) => ({
     id: Date.now() + Math.random(),
     firstName,
@@ -436,7 +436,7 @@ async function performMultipleOperations() {
     }
 });
 
-// 10.2 Department factory.
+// 10.2 Create department factory.
 const createDepartment = (name, employees) => {
     return {
         name: name,
@@ -452,3 +452,23 @@ const createDepartment = (name, employees) => {
     };
 };
 
+// 10.3 Create project factory.
+const createProject = (id, name, status, teamMembers, budget) => {
+    return {
+        id,
+        name,
+        status,
+        teamMembers,
+        budget,
+        
+        // Add new member to the team.
+        addTeamMember: (employeeId) => {
+            if (!teamMembers.includes(employeeId)) {
+                teamMembers.push(employeeId);
+                console.log(`Employee ID ${employeeId}, '${name}' is added to the project.`);
+            } else {
+                console.log(`Employee ID ${employeeId} is already in project.`);
+            }
+        },      
+    };
+};
