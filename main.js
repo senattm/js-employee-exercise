@@ -528,12 +528,18 @@ class Employee {
     };
 
     // 12.3 Formatted salary getter.
+
     get formattedSalary() {
     return this.salary.toLocaleString('tr-TR', { 
         style: 'currency', 
         currency: 'TRY' 
     });
     };
+
+    //12.4 Getter for skills.
+    get skillCount() {
+    return this.skills.length;
+};
 
 };
 
