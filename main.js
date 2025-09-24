@@ -281,8 +281,19 @@ function createSalaryFilter(minSalary, maxSalary = Infinity) {
 };
 
 // 8.2 - Takes a department name and return a new function
-const createDepartmentFilter = (departmentName) => {
-        return (employee) => employee.department === departmentName;
+function createDepartmentFilter(department) {
+    return function(employee) {
+        return employee.department.toLowerCase() === department.toLowerCase();
     };
+};
 
-    
+// 8.3 - Create a skill search factory function
+    function createSkillSearchFilter(skill) {
+    return function(employee) {
+        return employee.skills.some(s => 
+            s.toLowerCase().includes(skill.toLowerCase())
+        );
+    };
+};
+
+
