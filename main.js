@@ -166,3 +166,17 @@ const calculateWorkingYears = () => {
     return workingYears;
 };
 
+// 5.3 - Find the day of the week they started working
+const getStartDayOfWeek = () => {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const startDays = companyData.employees.map(emp => {
+        const startDate = new Date(emp.startDate);
+        return {
+            name: `${emp.firstName} ${emp.lastName}`,
+            day: days[startDate.getDay()]
+        };
+    });
+    console.log("Start days of the week:", startDays);
+    return startDays;
+};
+
