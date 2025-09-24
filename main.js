@@ -180,3 +180,16 @@ const getStartDayOfWeek = () => {
     return startDays;
 };
 
+// 5.4 - Format dates to "day/month/year"
+const formatDates = () => {
+    const formattedDates = companyData.employees.map(emp => {
+        const startDate = new Date(emp.startDate);
+        return {
+            name: `${emp.firstName} ${emp.lastName}`,
+            formattedDate: startDate.toLocaleDateString('tr-TR')
+        };
+    });
+    console.log("Formatted dates:", formattedDates);
+    return formattedDates;
+};
+
