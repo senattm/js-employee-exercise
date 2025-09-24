@@ -318,3 +318,10 @@ function createSortFunction(field, order = 'asc') {
             return count;
         };
     };
+
+ // Add function creates calculator that remembers a percentage increase.
+    const createSalaryCalculator = (increasePercentage) => {
+        return (baseSalary) => {
+            return baseSalary * (1 + increasePercentage);
+        };
+    };
