@@ -335,7 +335,7 @@ function createSortFunction(field, order = 'asc') {
         };
     };
 
-// 9.4  Function creates a simple, private caching system.
+// 9.4 Function creates a simple, private caching system.
     const createCacheSystem = () => {       
         const cache = {};      
         return {
@@ -346,3 +346,12 @@ function createSortFunction(field, order = 'asc') {
             }
         };
     };
+
+// 10.1 An async function.
+async function loadEmployeeData(delay = 1000) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+        resolve(companyData.employees);
+        }, delay);
+    });
+}
