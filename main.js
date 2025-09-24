@@ -296,4 +296,16 @@ function createDepartmentFilter(department) {
     };
 };
 
-
+// 8.4 - Function that generates sorting function 
+function createSortFunction(field, order = 'asc') {
+    return function(a, b) {
+        const aValue = a[field];
+        const bValue = b[field];
+        
+        if (order === 'asc') {
+            return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+        } else {
+            return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+        }
+    };
+};
