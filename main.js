@@ -496,26 +496,28 @@ const createReport = (type, data) => {
 
 // 12.0 Employee class.
 class Employee {
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  };
+    constructor(data) {
+        // Tüm gerekli verileri constructor'da tanımlayın.
+        this.firstName = data.firstName;
+        this.lastName = data.lastName;
+        this.salary = data.salary;
+        this.birthDate = new Date(data.birthDate);
+        this.skills = data.skills;
+    }
 
-  // 12.1 FullName getter/setter.
+    // 12.1 FullName getter/setter.
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
 
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`;
-  };
+    set fullName(newFullName) {
+        const parts = newFullName.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts.slice(1).join(' '); // Handles names with spaces
+    }
 
-  set fullName(newFullName) {
-    const parts = newFullName.split(' ');
-    this.firstName = parts[0];
-    this.lastName = parts.slice(1).join(' '); // Handles names with spaces
-  }
-
-  // 12.2 FullName getter/setter.
-
-  get age() {
+    // 12.2 Age hesaplayan getter.
+    get age() {
         const today = new Date();
         const birthDate = this.birthDate;
         let age = today.getFullYear() - birthDate.getFullYear();
@@ -525,21 +527,19 @@ class Employee {
             age--;
         }
         return age;
-    };
+    }
 
     // 12.3 Formatted salary getter.
-
     get formattedSalary() {
-    return this.salary.toLocaleString('tr-TR', { 
-        style: 'currency', 
-        currency: 'TRY' 
-    });
-    };
+        return this.salary.toLocaleString('tr-TR', { 
+            style: 'currency', 
+            currency: 'TRY' 
+        });
+    }
 
-    //12.4 Getter for skills.
+    // 12.4 Getter for skills.
     get skillCount() {
-    return this.skills.length;
-};
-
-};
+        return this.skills.length;
+    }
+}
 
