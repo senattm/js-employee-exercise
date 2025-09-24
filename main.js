@@ -527,5 +527,13 @@ class Employee {
         return age;
     };
 
+    // 12.3 Formatted salary getter.
+    get formattedSalary() {
+    return this.salary.toLocaleString('tr-TR', { 
+        style: 'currency', 
+        currency: 'TRY' 
+    });
+    };
+
 };
 
