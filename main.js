@@ -1,5 +1,5 @@
 //include data
-const companyData = require("./data/companyData");
+ const companyData = require("./data/companyData");
 
 //2.1 Convert all the employee names to uppercase
 const convertNamesToUpperCase = function(employees){
@@ -127,6 +127,12 @@ const objectUtils = {
     for (const [key, value] of Object.entries(obj)) {
       console.log(`- ${key}: ${value}`);
     }
+  },
+  // 4.4 - Create an object copy and add a bonus
+  addBonus(obj, bonusAmount) {
+    return Object.assign({}, obj, {
+      bonus: bonusAmount
+    });
   }
 
 };
