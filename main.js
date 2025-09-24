@@ -405,3 +405,33 @@ async function performMultipleOperations() {
         return null;
     }
 };
+
+//11.1 Factory.
+ const createEmployee = (firstName, lastName, email, position, salary, department, skills = []) => ({
+    id: Date.now() + Math.random(),
+    firstName,
+    lastName,
+    email,
+    position,
+    salary,
+    department,
+    skills,
+    isActive: true,
+    startDate: new Date().toISOString().split('T')[0],
+
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+
+    addSkill(skill) {
+        if (!this.skills.includes(skill)) {
+            this.skills.push(skill);
+        }
+        return this.skills;
+    },
+
+    updateSalary(newSalary) {
+        this.salary = newSalary;
+        return this.salary;
+    }
+});
