@@ -218,5 +218,8 @@ function Employee(id, firstName, lastName, position, salary, email) {
     this.position = position;
     this.salary = salary;
     this.email = email;
-}
+;}
+
+// 6.2 - Create new employee instances
+const newEmployee1 = new Employee(201, "Sena", "Atim", "Engineer", 50000, "sena@hotmail.com");
 
