@@ -494,20 +494,38 @@ const createReport = (type, data) => {
     };
 };
 
-// 12.1 FullName getter/setter.
+// 12.0 Employee class.
 class Employee {
   constructor(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
-  }
+  };
+
+  // 12.1 FullName getter/setter.
 
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
-  }
+  };
 
   set fullName(newFullName) {
     const parts = newFullName.split(' ');
     this.firstName = parts[0];
     this.lastName = parts.slice(1).join(' '); // Handles names with spaces
   }
+
+  // 12.2 FullName getter/setter.
+
+  get age() {
+        const today = new Date();
+        const birthDate = this.birthDate;
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
 };
+
