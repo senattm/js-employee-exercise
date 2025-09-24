@@ -334,3 +334,15 @@ function createSortFunction(field, order = 'asc') {
             return `EMP-${lastID}`;
         };
     };
+
+// 9.4  Function creates a simple, private caching system.
+    const createCacheSystem = () => {       
+        const cache = {};      
+        return {
+            get: (key) => cache[key],
+            set: (key, value) => {
+                cache[key] = value;
+                return `Cached: ${key}`;
+            }
+        };
+    };
