@@ -210,5 +210,13 @@ const findLongestWorkingEmployee = () => {
     return longestWorking;
 };
 
-
+// 6.1 - Create an Employee constructor
+function Employee(id, firstName, lastName, position, salary, email) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.position = position;
+    this.salary = salary;
+    this.email = email;
+}
 
