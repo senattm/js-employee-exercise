@@ -319,9 +319,18 @@ function createSortFunction(field, order = 'asc') {
         };
     };
 
- // Add function creates calculator that remembers a percentage increase.
+ // 9.2  Add function creates calculator that remembers a percentage increase.
     const createSalaryCalculator = (increasePercentage) => {
         return (baseSalary) => {
             return baseSalary * (1 + increasePercentage);
+        };
+    };
+
+// 9.3 Function creates a unique ID generator.
+ const createIDGenerator = () => {
+        let lastID = 0; 
+        return () => {
+            lastID++;
+            return `EMP-${lastID}`;
         };
     };
