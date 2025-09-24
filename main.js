@@ -387,3 +387,21 @@ const fetchEmployeeDataAsync = () => {
     });
 };
 
+// 10.4 Multiple async function.
+async function performMultipleOperations() {
+    try {
+        const [employees, departments, salaryStats] = await Promise.all([
+            Promise.resolve(companyData.employees),
+            Promise.resolve(['Development', 'Design', 'Management', 'Operations']),
+            Promise.resolve({ min: 65000, max: 90000, avg: 79000 })
+        ]);
+
+        console.log("10.4 - Multiple operations completed");
+        console.log("Employees loaded:", employees.length);
+
+        return { employees, departments, salaryStats };
+    } catch (error) {
+        console.error("Error in multiple operations:", error);
+        return null;
+    }
+};
