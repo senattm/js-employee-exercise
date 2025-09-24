@@ -354,4 +354,21 @@ async function loadEmployeeData(delay = 1000) {
         resolve(companyData.employees);
         }, delay);
     });
-}
+};
+
+// 10.2 Promise chain.
+async function processEmployeeDataChain() {
+    return loadEmployeeData(500)
+        .then(employees => {
+            console.log("10.2 - Data loaded, processing...");
+            return employees.filter(emp => emp.isActive);
+        })
+        .then(activeEmployees => {
+            console.log("Active employees filtered:", activeEmployees.length);
+            return activeEmployees.map(emp => emp.firstName);
+        })
+        .then(names => {
+            console.log("Names extracted:", names);
+            return names;
+        });
+};
