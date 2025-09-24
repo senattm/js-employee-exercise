@@ -406,7 +406,7 @@ async function performMultipleOperations() {
     }
 };
 
-//11.1 Factory.
+//11.1 Employee factory.
  const createEmployee = (firstName, lastName, email, position, salary, department, skills = []) => ({
     id: Date.now() + Math.random(),
     firstName,
@@ -435,3 +435,20 @@ async function performMultipleOperations() {
         return this.salary;
     }
 });
+
+// 10.2 Department factory.
+const createDepartment = (name, employees) => {
+    return {
+        name: name,
+        employees: employees,
+
+        getHeadcount: () => {
+            return employees.length;
+        },
+        
+        getEmployeeNames: () => {
+            return employees.map(emp => `${emp.firstName} ${emp.lastName}`);
+        }
+    };
+};
+
