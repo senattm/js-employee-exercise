@@ -279,3 +279,10 @@ function createSalaryFilter(minSalary, maxSalary = Infinity) {
         return employee.salary >= minSalary && employee.salary <= maxSalary;
     };
 };
+
+// 8.2 - Takes a department name and return a new function
+const createDepartmentFilter = (departmentName) => {
+        return (employee) => employee.department === departmentName;
+    };
+
+    
