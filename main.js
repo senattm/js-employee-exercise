@@ -223,3 +223,8 @@ function Employee(id, firstName, lastName, position, salary, email) {
 // 6.2 - Create new employee instances
 const newEmployee1 = new Employee(201, "Sena", "Atim", "Engineer", 50000, "sena@hotmail.com");
 
+// 6.3 - Add a method to the prototype
+Employee.prototype.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`;
+};
+
