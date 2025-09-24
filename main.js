@@ -141,3 +141,12 @@ const objectUtils = {
   }
 };
 
+// 5.1 - Convert start dates to a Date object
+const convertStartDates = () => {
+    const datesConverted = companyData.employees.map(emp => ({
+        name: `${emp.firstName} ${emp.lastName}`,
+        startDate: new Date(emp.startDate)
+    }));
+    console.log("Start dates have been converted");
+    return datesConverted;
+};
