@@ -133,7 +133,11 @@ const objectUtils = {
     return Object.assign({}, obj, {
       bonus: bonusAmount
     });
-  }
+  }, 
 
+  // 4.5 - Check if the object has a property
+  hasProperty(obj, prop) {
+    return obj.hasOwnProperty(prop);
+  }
 };
 
