@@ -493,3 +493,21 @@ const createReport = (type, data) => {
         }
     };
 };
+
+// 12.1 FullName getter/setter.
+class Employee {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  set fullName(newFullName) {
+    const parts = newFullName.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts.slice(1).join(' '); // Handles names with spaces
+  }
+};
