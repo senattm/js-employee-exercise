@@ -372,3 +372,18 @@ async function processEmployeeDataChain() {
             return names;
         });
 };
+
+// 10.3 A Promise-producing function that can either resolve or reject.
+const fetchEmployeeDataAsync = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // Simulate a network failure 50% of the time.
+            if (Math.random() > 0.5) {
+                reject("Error: Network connection failed.");
+            } else {
+                resolve(companyData.employees);
+            }
+        }, 1500); 
+    });
+};
+
