@@ -436,7 +436,7 @@ async function performMultipleOperations() {
     }
 });
 
-// 10.2 Create department factory.
+// 11.2 Create department factory.
 const createDepartment = (name, employees) => {
     return {
         name: name,
@@ -452,7 +452,7 @@ const createDepartment = (name, employees) => {
     };
 };
 
-// 10.3 Create project factory.
+// 11.3 Create project factory.
 const createProject = (id, name, status, teamMembers, budget) => {
     return {
         id,
@@ -470,5 +470,26 @@ const createProject = (id, name, status, teamMembers, budget) => {
                 console.log(`Employee ID ${employeeId} is already in project.`);
             }
         },      
+    };
+};
+
+// 11.4 Create report factory.
+const createReport = (type, data) => {
+    const reportDate = new Date().toLocaleDateString('en-US');
+
+    return {
+        type: type,
+        data: data,
+
+        // A method that generates and returns the report based on its type.
+        generate: () => {
+            if (type === "summary") {
+                return `Sumary Report\nDate: ${reportDate}\nTotal Records: ${data.length}`;
+            } else if (type === "detailed") {
+                return `Detailed Report\nDate: ${reportDate}\nData: ${JSON.stringify(data, null, 2)}`;
+            } else {
+                return `Unknown report type: '${type}'`;
+            }
+        }
     };
 };
