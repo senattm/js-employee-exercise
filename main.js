@@ -121,6 +121,13 @@ const objectUtils = {
     // 4.2 - Get all values of an object
     getObjectValues(obj) {
         return Object.values(obj);
-    } 
+    },
+     // 4.3 - Loop and print key-value pairs
+    printObjectEntries(obj) {
+    for (const [key, value] of Object.entries(obj)) {
+      console.log(`- ${key}: ${value}`);
+    }
+  }
+
 };
 
