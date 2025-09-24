@@ -193,3 +193,22 @@ const formatDates = () => {
     return formattedDates;
 };
 
+// 5.5 - Find the longest-serving employee
+const findLongestWorkingEmployee = () => {
+    const employeeWithDates = companyData.employees.map(emp => ({
+        ...emp,
+        startDate: new Date(emp.startDate)
+    }));
+
+    const longestWorking = employeeWithDates.reduce((oldest, current) =>
+        current.startDate < oldest.startDate ? current : oldest
+    );
+
+    console.log("Longest working employee:",
+        `${longestWorking.firstName} ${longestWorking.lastName}`);
+
+    return longestWorking;
+};
+
+
+
