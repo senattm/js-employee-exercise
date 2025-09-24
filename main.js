@@ -309,3 +309,12 @@ function createSortFunction(field, order = 'asc') {
         }
     };
 };
+
+// 9.1 Add closure for employee counter
+   const createEmployeeCounter = () => {
+        let count = 0; 
+        return () => {
+            count++;
+            return count;
+        };
+    };
