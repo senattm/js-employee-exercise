@@ -497,7 +497,6 @@ const createReport = (type, data) => {
 // 12.0 Employee class.
 class Employee {
     constructor(data) {
-        // Tüm gerekli verileri constructor'da tanımlayın.
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.salary = data.salary;
@@ -516,7 +515,7 @@ class Employee {
         this.lastName = parts.slice(1).join(' '); // Handles names with spaces
     }
 
-    // 12.2 Age hesaplayan getter.
+    // 12.2 Age getter setter.
     get age() {
         const today = new Date();
         const birthDate = this.birthDate;
