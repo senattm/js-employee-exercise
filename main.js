@@ -420,22 +420,20 @@ const createEmployee = (id, firstName, lastName, email, position, salary, startD
     department,
     getFullName: () => `${firstName} ${lastName}`,
     getSkillCount: () => skills.length,
-    addSkill: (skill) => skills.push(skill),
-    giveRaise: (percent) => salary += salary * (percent / 100)
+    addSkill: (skill) => skills.push(skill)
 });
 
 
 // 11.2 Create department factory.
-const createDepartment = (name, manager = null) => ({
-    name,
-    manager,
-    setManager: (m) => manager = m,
-    employeeCount: (employees) => employees.filter(e => e.department === name).length,
-    averageSalary: (employees) => {
-        const deptEmployees = employees.filter(e => e.department === name);
-        if (!deptEmployees.length) return 0;
-        return deptEmployees.reduce((sum, e) => sum + e.salary, 0) / deptEmployees.length;
-    }
+const createDepartment = (name) => ({
+  name,
+  employeeCount: (employees) => 
+    employees.filter(e => e.department === name).length,
+  averageSalary: (employees) => {
+    const deptEmployees = employees.filter(e => e.department === name);
+    if (!deptEmployees.length) return 0;
+    return deptEmployees.reduce((sum, e) => sum + e.salary, 0) / deptEmployees.length;
+  }
 });
 
 // 11.3 Create project factory.
