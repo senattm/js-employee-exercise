@@ -406,90 +406,66 @@ async function performMultipleOperations() {
     }
 };
 
+//Amaç sınıf ya da new kelimesi kullanmadan nesne oluşturmak.
 //11.1 Create employee factory.
- const createEmployee = (firstName, lastName, email, position, salary, department, skills = []) => ({
-    id: Date.now() + Math.random(),
+const createEmployee = (id, firstName, lastName, email, position, salary, startDate, skills = [], isActive = true, department) => ({
+    id,
     firstName,
     lastName,
     email,
     position,
     salary,
-    department,
+    startDate,
     skills,
-    isActive: true,
-    startDate: new Date().toISOString().split('T')[0],
+    isActive,
+    department,
+    getFullName: () => `${firstName} ${lastName}`,
+    getSkillCount: () => skills.length,
+    addSkill: (skill) => skills.push(skill),
+    giveRaise: (percent) => salary += salary * (percent / 100)
+});
 
-    getFullName() {
-        return `${this.firstName} ${this.lastName}`;
-    },
 
-    addSkill(skill) {
-        if (!this.skills.includes(skill)) {
-            this.skills.push(skill);
-        }
-        return this.skills;
-    },
-
-    updateSalary(newSalary) {
-        this.salary = newSalary;
-        return this.salary;
+// 11.2 Create department factory.
+const createDepartment = (name, manager = null) => ({
+    name,
+    manager,
+    setManager: (m) => manager = m,
+    employeeCount: (employees) => employees.filter(e => e.department === name).length,
+    averageSalary: (employees) => {
+        const deptEmployees = employees.filter(e => e.department === name);
+        if (!deptEmployees.length) return 0;
+        return deptEmployees.reduce((sum, e) => sum + e.salary, 0) / deptEmployees.length;
     }
 });
 
-// 11.2 Create department factory.
-const createDepartment = (name, employees) => {
-    return {
-        name: name,
-        employees: employees,
-
-        getHeadcount: () => {
-            return employees.length;
-        },
-        
-        getEmployeeNames: () => {
-            return employees.map(emp => `${emp.firstName} ${emp.lastName}`);
-        }
-    };
-};
-
 // 11.3 Create project factory.
-const createProject = (id, name, status, teamMembers, budget) => {
-    return {
-        id,
-        name,
-        status,
-        teamMembers,
-        budget,
-        
-        // Add new member to the team.
-        addTeamMember: (employeeId) => {
-            if (!teamMembers.includes(employeeId)) {
-                teamMembers.push(employeeId);
-                console.log(`Employee ID ${employeeId}, '${name}' is added to the project.`);
-            } else {
-                console.log(`Employee ID ${employeeId} is already in project.`);
-            }
-        },      
-    };
-};
+const createProject = (id, name, status, startDate, endDate = null, teamMembers = [], budget = 0) => ({
+    id,
+    name,
+    status,
+    startDate,
+    endDate,
+    teamMembers,
+    budget,
+    isFinished: () => status.toLowerCase() === "tamamlandı",
+    durationDays: () => {
+        const end = endDate ? new Date(endDate) : new Date();
+        return Math.floor((end - new Date(startDate)) / (1000 * 60 * 60 * 24));
+    },
+    addMember: (memberId) => teamMembers.push(memberId),
+    removeMember: (memberId) => teamMembers = teamMembers.filter(m => m !== memberId)
+});
 
 // 11.4 Create report factory.
-const createReport = (type, data) => {
-    const reportDate = new Date().toLocaleDateString('en-US');
+const createReport = (id, title, content, author) => ({
+    id,
+    title,
+    content,
+    author,
+    createdAt: new Date(),
+    summary: (len = 50) => content.length > len ? content.slice(0, len) + "..." : content,
+    updateContent: (newContent) => content = newContent,
+    info: () => `${title} - ${author} (${new Date().toLocaleDateString()})`
+});
 
-    return {
-        type: type,
-        data: data,
-
-        // A method that generates and returns the report based on its type.
-        generate: () => {
-            if (type === "summary") {
-                return `Sumary Report\nDate: ${reportDate}\nTotal Records: ${data.length}`;
-            } else if (type === "detailed") {
-                return `Detailed Report\nDate: ${reportDate}\nData: ${JSON.stringify(data, null, 2)}`;
-            } else {
-                return `Unknown report type: '${type}'`;
-            }
-        }
-    };
-};
