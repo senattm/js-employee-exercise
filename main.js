@@ -406,7 +406,6 @@ async function performMultipleOperations() {
     }
 };
 
-//Amaç sınıf ya da new kelimesi kullanmadan nesne oluşturmak.
 //11.1 Create employee factory.
 const createEmployee = (id, firstName, lastName, email, position, salary, startDate, skills = [], isActive = true, department) => ({
     id,
@@ -448,7 +447,7 @@ const createProject = (id, name, status, startDate, endDate = null, teamMembers 
     endDate,
     teamMembers,
     budget,
-    isFinished: () => status.toLowerCase() === "tamamlandı",
+    isFinished: () => status.toLowerCase() === "completed",
     durationDays: () => {
         const end = endDate ? new Date(endDate) : new Date();
         return Math.floor((end - new Date(startDate)) / (1000 * 60 * 60 * 24));
