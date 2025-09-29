@@ -455,14 +455,20 @@ const createProject = (id, name, status, startDate, endDate = null, teamMembers 
 });
 
 // 11.4 Create report factory.
-const createReport = (id, title, content, author) => ({
-    id,
-    title,
-    content,
-    author,
-    createdAt: new Date(),
-    summary: (len = 50) => content.length > len ? content.slice(0, len) + "..." : content,
-    updateContent: (newContent) => content = newContent,
-    info: () => `${title} - ${author} (${new Date().toLocaleDateString()})`
+const createReport = (id, projectId, employeeId, title, content) => ({
+  id,
+  projectId,   
+  employeeId, 
+  title,
+  content,
+  createdAt: new Date(),
+
+  summary: (len = 50) =>
+    content.length > len ? content.slice(0, len) + "..." : content,
+
+  updateContent: (newContent) => content = newContent
 });
+
+
+
 
